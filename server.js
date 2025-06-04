@@ -1,10 +1,12 @@
 const axios = require("axios");
 const express = require("express");
 const bodyParser = require("body-parser");
+const cors = require('cors');
 
 const app = express();
 const PORT = 3000;
 
+app.use(cors()); // Allow all origins (or pass options to restrict)
 app.use(bodyParser.json());
 const API_KEY = "190eeced00074b8c86350003250406";
 
