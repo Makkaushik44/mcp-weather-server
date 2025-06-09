@@ -7,14 +7,18 @@ const app = express();
 const PORT = 3000;
 
 app.use(cors()); // Allow all origins (or pass options to restrict)
+app.use(cors({ origin: 'http://127.0.0.1:5500' }));
+
 app.use(bodyParser.json());
 const API_KEY = "190eeced00074b8c86350003250406";
 
 app.post("/rpc", (req, res) => {
   const { jsonrpc, method, params, id } = req.body;
 
-  if (method === "getWeather") {
+  if (method === "getWeatherDataByCity") {
     const location = params?.location || "Unknown";
+    console.log(location);
+    
 
     const getLiveWeather = async (location) => {
       const response = await axios.get(
